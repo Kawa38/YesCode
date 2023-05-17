@@ -3,38 +3,37 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-
-{#***************************************************** #}
-
-{% set article1 ={"title":"Angular", "intro":"Angular, le framework de Google", "author":"Angus Lard","image":"https://angular.io/assets/images/logos/angular/angular.svg"} %}
-{% set article2 ={"title":"Symfony", "intro":"Symphony est un framework PHP complet", "author":"Fabien Potencier","image":"https://www.britefish.net/wp-content/uploads/2019/07/logo-symfony.png"} %}
-{% set article3 ={"title":"Laravel", "intro":"Laravel est un frameworl PHP", "author":"Lara Velle","image":"https://3.bp.blogspot.com/-_f33tOiX25k/WDM0JRBwhSI/AAAAAAAAB6g/Imaf_oWgmiwPrW0y3097U_0tJtziMTsZgCLcB/s1600/laravel-logo-big.png"} %}
-
-{% set articles = [ article1, article2 , article3] %}
-{#***************************************************** #}
-
+<div class="container">
 
     <div class="jumbotron text-center my-5 shadow">
         <h1 class="display-4">Bienvenue sur YesCode !</h1>
-        <p class="lead">Ici ça parle de code, langages et technos de demain </p>
+        <p class="lead">Ici ça parle de code, langages, technos de demain </p>
         <hr class="my-4">
         <p>Retrouvez nos derniers articles sur les technos les plus hype du moment !</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg shadow" href="#" role="button">  &lt;/&gt; Actualités &lt;/&gt; </a>
         </p>
     </div>
-{#***************************************************** #}
+
     <h2 class="text-center h1">Les derniers articles</h2>
 
+    {% set symfony = {"title": "symfony", "intro": "Symfony est un framework PHP complet", "author":"Fabien Potencier", "image":"https://neo7.fr/wp-content/uploads/2018/01/symfony-logo.png"} %}
+     
+    {% set angular = {"title": "angular", "intro": "Angular le framework de Google", "author":"Angus Lard", "image":"https://angular.io/assets/images/logos/angular/angular.svg"  }%}
 
+    {% set laravel = {"title": "laravel", "intro": "Laravel est un framework PHP aussi", "author":"Lara Velle" , "image":"https://jf-blog.fr/wp-content/uploads/2018/07/laravel-logo.png"} %}
+    
+    {% set articles = {'angular':angular, 'symfony':symfony, 'laravel':laravel} %}
 
-    <div class="row">
+    <div class=" row flex-lg-row flex-xl-row flex-column">
+
     {% for article in articles %}
-         {% include "/partials/card.html.twig" with {"article":article} %}
-    {% endfor %}
-        
-    </div>
 
+        {% include "partials/card.article.html.twig" with article   %}
+        
+    {% endfor %}
+
+    </div>
 </div>
 
 
